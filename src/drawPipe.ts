@@ -1,5 +1,5 @@
 import { drawCircle } from "./drawCircle";
-import { drawLine } from "./drawLine";
+import { drawLineWithWrapAround } from "./drawLineWithWrapAround";
 import { getNextCoordinates } from "./getNextCoordinates";
 import { getNextDirection } from "./getNextDirection";
 import { getRandomColor } from "./getRandomColor";
@@ -38,17 +38,17 @@ export const drawPipe = async ({
     });
     const nextDirection = getNextDirection(currentDirection);
 
-    if (
-      Math.abs(nextCoordinates.x - currentCoordinates.x) <=
-        pipeIncrementLength &&
-      Math.abs(nextCoordinates.y - currentCoordinates.y) <= pipeIncrementLength
-    ) {
-      if (nextDirection != currentDirection) {
-        drawCircle({ coordinates: nextCoordinates, color, pipeWidth });
-      }
-
-      drawLine({ currentCoordinates, nextCoordinates, color, pipeWidth });
+    if (nextDirection != currentDirection) {
+      drawCircle({ coordinates: nextCoordinates, color, pipeWidth });
     }
+
+    drawLineWithWrapAround({
+      currentCoordinates,
+      nextCoordinates,
+      color,
+      pipeIncrementLength,
+      pipeWidth,
+    });
 
     await new Promise((resolve) =>
       setTimeout(() => {

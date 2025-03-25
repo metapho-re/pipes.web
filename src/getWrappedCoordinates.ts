@@ -8,11 +8,11 @@ export const getWrappedCoordinates = (
 
   const nextX = (function (currentX: number) {
     if (currentX < 0) {
-      return canvas.width;
+      return (currentX % canvas.width) + canvas.width;
     }
 
     if (currentX > canvas.width) {
-      return 0;
+      return currentX % canvas.width;
     }
 
     return currentX;
@@ -20,11 +20,11 @@ export const getWrappedCoordinates = (
 
   const nextY = (function (currentY: number) {
     if (currentY < 0) {
-      return canvas.height;
+      return (currentY % canvas.height) + canvas.height;
     }
 
     if (currentY > canvas.height) {
-      return 0;
+      return currentY % canvas.height;
     }
 
     return currentY;

@@ -30,6 +30,8 @@ export const drawPipe = async ({
   );
   let counter = pipeLifespan;
 
+  drawCircle({ coordinates: currentCoordinates, color, pipeWidth });
+
   while (counter >= 0) {
     const nextCoordinates = getNextCoordinates({
       coordinates: currentCoordinates,
@@ -38,10 +40,6 @@ export const drawPipe = async ({
     });
     const nextDirection = getNextDirection(currentDirection);
 
-    if (nextDirection != currentDirection) {
-      drawCircle({ coordinates: nextCoordinates, color, pipeWidth });
-    }
-
     drawLineWithWrapAround({
       currentCoordinates,
       nextCoordinates,
@@ -49,6 +47,8 @@ export const drawPipe = async ({
       pipeIncrementLength,
       pipeWidth,
     });
+
+    drawCircle({ coordinates: nextCoordinates, color, pipeWidth });
 
     await new Promise((resolve) =>
       setTimeout(() => {

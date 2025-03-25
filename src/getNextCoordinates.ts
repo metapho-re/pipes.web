@@ -1,7 +1,7 @@
 import { getWrappedCoordinates } from "./getWrappedCoordinates";
 import { Coordinates, Direction, UrlParameters } from "./types";
 
-interface Parameters {
+interface Params {
   coordinates: Coordinates;
   direction: Direction;
   pipeIncrementLength: UrlParameters["pipeIncrementLength"];
@@ -11,7 +11,7 @@ export const getNextCoordinates = ({
   coordinates,
   direction,
   pipeIncrementLength,
-}: Parameters): Coordinates => {
+}: Params): Coordinates => {
   const coordinatesUpdate = (function () {
     switch (direction) {
       case Direction.Up:

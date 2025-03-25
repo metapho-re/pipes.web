@@ -6,7 +6,7 @@ import { getRandomColor } from "./getRandomColor";
 import { canvas } from "./queries";
 import { Coordinates, Direction, UrlParameters } from "./types";
 
-interface Parameters {
+interface Params {
   pipeIncrementLength: UrlParameters["pipeIncrementLength"];
   pipeLifespan: UrlParameters["pipeLifespan"];
   pipeRefreshPeriod: UrlParameters["pipeRefreshPeriod"];
@@ -18,7 +18,7 @@ export const drawPipe = async ({
   pipeLifespan,
   pipeRefreshPeriod,
   pipeWidth,
-}: Parameters): Promise<void> => {
+}: Params): Promise<void> => {
   const color = getRandomColor(Math.random());
 
   let currentCoordinates: Coordinates = {

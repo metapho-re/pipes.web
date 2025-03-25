@@ -1,17 +1,13 @@
 import { context } from "./queries";
 import { Coordinates, UrlParameters } from "./types";
 
-interface Parameters {
+interface Params {
   coordinates: Coordinates;
   color: string;
   pipeWidth: UrlParameters["pipeWidth"];
 }
 
-export const drawCircle = ({
-  coordinates,
-  color,
-  pipeWidth,
-}: Parameters): void => {
+export const drawCircle = ({ coordinates, color, pipeWidth }: Params): void => {
   context.fillStyle = color;
 
   context.beginPath();

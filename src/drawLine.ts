@@ -1,7 +1,7 @@
 import { context } from "./queries";
 import { Coordinates, UrlParameters } from "./types";
 
-interface Parameters {
+interface Params {
   currentCoordinates: Coordinates;
   nextCoordinates: Coordinates;
   color: string;
@@ -13,7 +13,7 @@ export const drawLine = ({
   nextCoordinates,
   color,
   pipeWidth,
-}: Parameters): void => {
+}: Params): void => {
   context.strokeStyle = color;
   context.lineWidth = pipeWidth;
 
